@@ -9,7 +9,6 @@ class Game
     @player_two = Player.new(symbol: :O)
     @board = [["", "", "",],["", "", "",],["", "", ""]]
     @current_player = @player_one
-    # @print_board = puts "#{@board[0]}\n#{@board[1]}\n#{@board[2]}"
     @champ = nil
   end
 
@@ -23,13 +22,13 @@ class Game
     end
     @board[x][y] = @current_player.symbol
     switch_player
+    puts "#{@board[0]}\n#{@board[1]}\n#{@board[2]}"
     winner?
-    post_winner
   end
 
   private
 
-  def post_winner
+  def print_winner
     @champ ? "We have a winner!" : ""
   end
 
@@ -56,6 +55,7 @@ class Game
 
   def winner?
     game_rules
+    print_winner
   end
 
   def iterate_rules(winning_routes)
