@@ -1,3 +1,5 @@
+require 'player'
+
 class Game
 
   attr_reader :board, :current_player
@@ -8,13 +10,18 @@ class Game
   BOARD = [["", "", "",],["", "", "",],["", "", ""]]
 
   def initialize
+    @player_one = Player.new(symbol: :X)
+    @player_two = Player.new(symbol: :O)
     @board = BOARD
-    @current_player = :X
+    @current_player = @player_one
   end
 
 
   def take_turn(x,y)
-    @board[x][y] = @current_player
+    if !@board[x][y].empty?
+      raise "field is claimed"
+    end
+    @board[x][y] = @current_player.symbol
     switch_player
   end
 
@@ -23,7 +30,11 @@ class Game
   private
 
   def switch_player
-    @current_player == :X ? @current_player = :O : @current_player = :X
+    if @current_player == @player_one
+      @current_player = @player_two
+    else
+      @current_player = @player_one
+    end
   end
 
 
