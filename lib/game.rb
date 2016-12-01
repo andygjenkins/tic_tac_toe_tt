@@ -41,10 +41,7 @@ class Game
     end
   end
 
-  def winner?
-    sym1 = @player_one.symbol
-    sym2 = @player_two.symbol
-
+  def game_rules
     row_one = board[0]
     row_two = board[1]
     row_three = board[2]
@@ -53,9 +50,17 @@ class Game
     column_3 = [ board[0][2], board[1][2], board[2][2] ]
     diagonal_1 = [ board[0][0], board[1][1], board[2][2] ]
     diagonal_2 = [ board[0][2], board[1][1], board[2][0] ]
-
     winning_routes = [row_one, row_two, row_three, column_1, column_2, column_3, diagonal_1, diagonal_2]
+    iterate_rules(winning_routes)
+  end
 
+  def winner?
+    game_rules
+  end
+
+  def iterate_rules(winning_routes)
+    sym1 = @player_one.symbol
+    sym2 = @player_two.symbol
     winning_routes.each do |i|
       if i == [sym1, sym1, sym1]
         @champ = @player_one
