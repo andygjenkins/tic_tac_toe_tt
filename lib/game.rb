@@ -13,5 +13,18 @@ class Game
   end
 
 
+  def take_turn(x,y)
+    @board[x][y] = @current_player
+    switch_player
+  end
+
+
+
+  private
+
+  def switch_player
+    @current_player == :X ? @current_player = :O : @current_player = :X
+  end
+
 
 end

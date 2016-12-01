@@ -25,10 +25,10 @@ $ irb||pry
 
 
 ### Progress:
-- [ ] Write tests for initializing a game: presence of a board, players
-- [ ] Pass tests for game
-- [ ] Write tests for taking turns: selecting a field, switching players
-- [ ] Pass tests for turns
+- [X] Write tests for initializing a game: presence of a board, players
+- [X] Pass tests for game
+- [X] Write tests for taking turns: selecting a field, switching players
+- [X] Pass tests for turns
 - [ ] Write tests for game logic: win == all fields in a row, column or diagonal  
 - [ ] Pass test for game logic
 
